@@ -29,6 +29,8 @@ package java.lang;
 import dalvik.annotation.optimization.FastNative;
 
 /**
+ * 所有类的父类
+ * 
  * Class {@code Object} is the root of the class hierarchy.
  * Every class has {@code Object} as a superclass. All objects,
  * including arrays, implement the methods of this class.
@@ -43,6 +45,8 @@ public class Object {
     private transient int shadow$_monitor_;
 
     /**
+     * 返回当前对象的类引用
+     * 
      * Returns the runtime class of this {@code Object}. The returned
      * {@code Class} object is the object that is locked by {@code
      * static synchronized} methods of the represented class.
@@ -66,6 +70,8 @@ public class Object {
     }
 
     /**
+     * 返回当前对象的哈希值，最佳实践参考EJ3 Item 11
+     * 
      * Returns a hash code value for the object. This method is
      * supported for the benefit of hash tables such as those provided by
      * {@link java.util.HashMap}.
@@ -123,6 +129,8 @@ public class Object {
     private static native int identityHashCodeNative(Object obj);
 
     /**
+     * 与另一个对象比较是否值相等，最佳实践参考EJ3 Item 10
+     * 
      * Indicates whether some other object is "equal to" this one.
      * <p>
      * The {@code equals} method implements an equivalence relation
@@ -173,6 +181,8 @@ public class Object {
     }
 
     /**
+     * 克隆一个新的对象，默认是浅拷贝，深拷贝需要开发者自己实现，最佳实践参考EJ3 Item 13
+     * 
      * Creates and returns a copy of this object.  The precise meaning
      * of "copy" may depend on the class of the object. The general
      * intent is that, for any object {@code x}, the expression:
@@ -249,6 +259,8 @@ public class Object {
 
 
     /**
+     * 返回该对象的字符串表示，最佳实践参考EJ3 Item 12
+     * 
      * Returns a string representation of the object. In general, the
      * {@code toString} method returns a string that
      * "textually represents" this object. The result should
@@ -274,6 +286,8 @@ public class Object {
     }
 
     /**
+     * 唤醒一个在该对象的监视器上等待的线程，尽量使用更高级的同步工具，参考EJ3 Item 81
+     * 
      * Wakes up a single thread that is waiting on this object's
      * monitor. If any threads are waiting on this object, one of them
      * is chosen to be awakened. The choice is arbitrary and occurs at
@@ -309,6 +323,8 @@ public class Object {
     public final native void notify();
 
     /**
+     * 唤醒所有在该对象的监视器上等待的线程，尽量使用更高级的同步工具，参考EJ3 Item 81
+     * 
      * Wakes up all threads that are waiting on this object's monitor. A
      * thread waits on an object's monitor by calling one of the
      * {@code wait} methods.
@@ -334,6 +350,8 @@ public class Object {
     public final native void notifyAll();
 
     /**
+     * 使当前获取到监视器锁的线程放弃锁，并在当前监视器上等待，尽量使用更高级的同步工具，参考EJ3 Item 81
+     * 
      * Causes the current thread to wait until either another thread invokes the
      * {@link java.lang.Object#notify()} method or the
      * {@link java.lang.Object#notifyAll()} method for this object, or a
@@ -423,6 +441,8 @@ public class Object {
     }
 
     /**
+     * 使当前获取到监视器锁的线程放弃锁，并在当前监视器上等待，尽量使用更高级的同步工具，参考EJ3 Item 81
+     * 
      * Causes the current thread to wait until another thread invokes the
      * {@link java.lang.Object#notify()} method or the
      * {@link java.lang.Object#notifyAll()} method for this object, or
@@ -488,6 +508,8 @@ public class Object {
     public final native void wait(long millis, int nanos) throws InterruptedException;
 
     /**
+     * 使当前获取到监视器锁的线程放弃锁，并在当前监视器上等待，尽量使用更高级的同步工具，参考EJ3 Item 81
+     * 
      * Causes the current thread to wait until another thread invokes the
      * {@link java.lang.Object#notify()} method or the
      * {@link java.lang.Object#notifyAll()} method for this object.
@@ -529,6 +551,8 @@ public class Object {
     public final native void wait() throws InterruptedException;
 
     /**
+     * 对象的终结方法，最多会执行一次，最佳实践参考EJ3 Item 8
+     * 
      * Called by the garbage collector on an object when garbage collection
      * determines that there are no more references to the object.
      * A subclass overrides the {@code finalize} method to dispose of
